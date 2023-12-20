@@ -182,7 +182,7 @@ Future<List<_SocketResult>> _getSockets(String multicastGroup, [int? port]) asyn
   final sockets = <_SocketResult>[];
   for (final interface in interfaces) {
     try {
-      final socket = await RawDatagramSocket.bind(InternetAddress.anyIPv4, port ?? 0);
+      final socket = await RawDatagramSocket.bind(InternetAddress.anyIPv6, port ?? 0);
       socket.joinMulticast(InternetAddress(multicastGroup), interface);
       sockets.add(_SocketResult(interface, socket));
     } catch (e) {
